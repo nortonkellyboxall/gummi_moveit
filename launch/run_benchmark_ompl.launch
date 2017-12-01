@@ -17,8 +17,8 @@
 
   <!-- Start Benchmark Executable -->
   <node name="$(anon moveit_benchmark)" pkg="moveit_ros_benchmarks" type="moveit_run_benchmark" args="$(arg cfg) --benchmark-planners" respawn="false" output="screen">
-    <rosparam command="load" file="$(eval find('gummi_ee_' + ee) + '/config/kinematics.yaml')"/>
-    <rosparam command="load" file="$(eval find('gummi_ee_' + ee) + '/config/ompl_planning.yaml')"/>
+    <rosparam command="load" file="$(eval find('gummi_base_' + base) + '/config/kinematics.yaml')"/>
+    <rosparam command="load" file="$(eval find('gummi_base_' + base) + '/config/ompl_planning.yaml')"/>
   </node>
 
 </launch>
