@@ -1,5 +1,5 @@
 <launch>
-
+  <arg name="base" value="$(env ROS_GUMMI_BASE)" />
   <arg name="debug" default="false" />
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
   <arg     if="$(arg debug)" name="launch_prefix" value="gdb --ex run --args" />
@@ -10,7 +10,7 @@
 
   <node name="$(anon rviz)" launch-prefix="$(arg launch_prefix)" pkg="rviz" type="rviz" respawn="false"
 	args="$(arg command_args)" output="screen">
-    <rosparam command="load" file="$(find gummi_description)/config/kinematics.yaml"/>
+    <rosparam command="load" file="$(eval find('gummi_base_' + base) + '/config/kinematics.yaml')"/>
   </node>
 
 </launch>
