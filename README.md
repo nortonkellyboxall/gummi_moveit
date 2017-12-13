@@ -1,5 +1,5 @@
 # gummi_moveit
-Core files for Moveit!
+Core files for Moveit! for the GummiArmCE.
 
 #
 
