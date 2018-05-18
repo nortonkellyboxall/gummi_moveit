@@ -15,21 +15,21 @@ Requires gummi_base + gummi_ee + gummi_interface (required for node "gummi_right
 
 #### Run it on the real robot
 
-Launch manager (roscore and the usb dongles for the dynamixels):
+1. Launch manager (roscore and the usb dongles for the dynamixels):
 
     $ roslaunch gummi_base_XXX manager.launch
     
-Launch controllers (defines what motor acts on which joint): 
+2. Launch controllers (defines what motor acts on which joint): 
 
     $ roslaunch gummi_base_XXX controllers.launch
 
-Launch gummi (loads antagonists, PIDs, encoder feedbacks, sets contraction levels, initializes joints, etc):
+3. Launch gummi (loads antagonists, PIDs, encoder feedbacks, sets contraction levels, initializes joints, etc):
 
 **ATTENTION: This is the first package that actually makes the robot move, be ready to shut it down promptly in case of improper behaviour**
 
     $ roslaunch gummi_interface gummi.launch
 
-Run moveit planner with rviz interface:
+4. Run moveit planner with rviz interface:
 
     $ roslaunch gummi_moveit gummi_moveit.launch
 
