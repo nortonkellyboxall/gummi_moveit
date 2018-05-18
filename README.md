@@ -1,10 +1,22 @@
 # gummi_moveit
 Core files for Moveit! for the GummiArmCE.
 
+### Setting it up
+
+For full funcionality this package requires gummi_base_XXX + gummi_ee_YYY + gummi_interface. Set those up in your catkin workspace directory and install all dependencies with rosdep:
+
+`$ rosdep install -y --from-paths . --ignore-src --rosdistro <YOUR-ROS-DISTRO>`
+
+Remembering to change \<YOUR-ROS-DISTRO\> for your ros distro, say kinetic or lunar or hydro. Then proceed with catkin_make. 
+
+If you don't have the robot or don't need to move the robot to test your code you only need gummi_base_XXX + gummi_ee_YYY. The package gummi_interface is required for node "gummi_right_arm_controller of type "follow_joint_trajectory.py", but this is not used for simulation, but still loaded in demo. 
+
+
+Install all dependencies with rosdep:
+
+`$ rosdep install -y --from-paths . --ignore-src --rosdistro <YOUR-ROS-DISTRO>`
+
 ### How to launch it
-
-Requires gummi_base + gummi_ee + gummi_interface (required for node "gummi_right_arm_controller of type "follow_joint_trajectory.py" - not necessary for simulation, but still loaded in demo) 
-
 #### Simulated robot
 
     $ roslaunch gummi_moveit demo.launch
