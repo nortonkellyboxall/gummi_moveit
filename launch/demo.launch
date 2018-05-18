@@ -1,5 +1,5 @@
 <launch>
-
+<group ns="moveit">
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />
   <!-- Allow user to specify database location -->
@@ -14,7 +14,7 @@
   </include>
 
   <!-- If needed, broadcast static tf for robot root -->
-  
+
 
   <!-- We do not have a robot connected, so publish fake joint states -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
@@ -27,6 +27,7 @@
 
   <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
   <include file="$(find gummi_moveit)/launch/move_group.launch">
+    <arg name="moveit_ns" value="true"/>
     <arg name="allow_trajectory_execution" value="true"/>
     <arg name="fake_execution" value="true"/>
     <arg name="info" value="true"/>
@@ -43,5 +44,5 @@
   <include file="$(find gummi_moveit)/launch/default_warehouse_db.launch" if="$(arg db)">
     <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
   </include>
-
+</group>
 </launch>
