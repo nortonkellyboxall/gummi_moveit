@@ -11,21 +11,16 @@ Remembering to change \<YOUR-ROS-DISTRO\> for your ros distro, say kinetic or lu
 
 If you don't have the robot or don't need to move the robot to test your code you only need gummi_base_XXX + gummi_ee_YYY. The package gummi_interface is required for node "gummi_right_arm_controller of type "follow_joint_trajectory.py", but this is not used for simulation, but still loaded in demo. 
 
-
-Install all dependencies with rosdep:
-
-`$ rosdep install -y --from-paths . --ignore-src --rosdistro <YOUR-ROS-DISTRO>`
-
 ### How to launch it
-#### Simulated robot
+#### Simulated arm
 
     $ roslaunch gummi_moveit demo.launch
 
-#### Simulated robot with gui interface
+#### Simulated arm with gui interface
 
     $ roslaunch gummi_moveit demo.launch usegui:=true
 
-#### Run it on the real robot
+#### Run it on the real robotic arm
 
 1. Launch manager (roscore and the usb dongles for the dynamixels):
 
