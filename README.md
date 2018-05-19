@@ -3,13 +3,13 @@ Core files for Moveit! for the GummiArmCE.
 
 ### Setting it up
 
-For full funcionality this package requires gummi_base_XXX + gummi_ee_YYY + gummi_interface. Set those up in your catkin workspace directory and install all dependencies with rosdep:
+For full funcionality this package requires gummi_rightbase_XXX + gummi_rightee_YYY + gummi_interface. Set those up in your catkin workspace directory and install all dependencies with rosdep:
 
 `$ rosdep install -y --from-paths . --ignore-src --rosdistro <YOUR-ROS-DISTRO>`
 
 Remembering to change \<YOUR-ROS-DISTRO\> for your ros distro, say kinetic or lunar or hydro. Then proceed with catkin_make. 
 
-If you don't have the robot or don't need to move the robot to test your code you only need gummi_base_XXX + gummi_ee_YYY. The package gummi_interface is required for node "gummi_right_arm_controller of type "follow_joint_trajectory.py", but this is not used for simulation, but still loaded in demo. 
+If you don't have the robot or don't need to move the robot to test your code you only need gummi_rightbase_XXX + gummi_rightee_YYY. The package gummi_interface is required for node "gummi_right_arm_controller of type "follow_joint_trajectory.py", but this is not used for simulation, but still loaded in demo. 
 
 ### How to launch it
 #### Simulated arm
@@ -24,11 +24,11 @@ If you don't have the robot or don't need to move the robot to test your code yo
 
 1. Launch manager (roscore and the usb dongles for the dynamixels):
 
-       $ roslaunch gummi_base_XXX manager.launch
+       $ roslaunch gummi_rightbase_XXX manager.launch
     
 2. Launch controllers (defines what motor acts on which joint): 
 
-       $ roslaunch gummi_base_XXX controllers.launch
+       $ roslaunch gummi_rightbase_XXX controllers.launch
 
 3. Launch gummi (loads antagonists, PIDs, encoder feedbacks, sets contraction levels, initializes joints, etc): **ATTENTION: This is the first package that actually makes the robot move, be ready to shut it down promptly in case of improper behaviour**
 

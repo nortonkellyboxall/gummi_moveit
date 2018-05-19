@@ -1,7 +1,7 @@
 <launch>
 
-  <arg name="base" value="$(env ROS_GUMMI_BASE)" />
-
+  <arg name="urdf_path"/>
+  
   <!-- OMPL Plugin for MoveIt! -->
   <arg name="planning_plugin" value="ompl_interface/OMPLPlanner" />
 
@@ -19,6 +19,6 @@
   <param name="request_adapters" value="$(arg planning_adapters)" />
   <param name="start_state_max_bounds_error" value="$(arg start_state_max_bounds_error)" />
 
-  <rosparam command="load" file="$(eval find('gummi_base_' + base) + '/config/ompl_planning.yaml')"/>
+  <rosparam command="load" file="$(arg urdf_path)/config/ompl_planning.yaml"/>
 
 </launch>

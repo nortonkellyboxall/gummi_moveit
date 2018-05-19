@@ -1,5 +1,5 @@
 <launch>
-  <arg name="base" value="$(env ROS_GUMMI_BASE)" />
+  <arg name="urdf_path"/>
 
   <!-- By default we do not overwrite the URDF. Change the following to true to change the default behavior -->
   <arg name="load_robot_description" default="false"/>
@@ -8,19 +8,19 @@
   <arg name="robot_description" default="robot_description"/>
 
   <!-- Load universal robot description format (URDF) -->
-  <param if="$(arg load_robot_description)" name="$(arg robot_description)" textfile="$(eval find('gummi_base_' + base) + '/gummi_description.urdf')"/>
+  <param if="$(arg load_robot_description)" name="$(arg robot_description)" textfile="$(arg urdf_path)/gummi_description.urdf"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="$(arg robot_description)_semantic" textfile="$(eval find('gummi_base_' + base) + '/config/gummi.srdf')" />
+  <param name="$(arg robot_description)_semantic" textfile="$(arg urdf_path)/config/gummi.srdf" />
 
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
-    <rosparam command="load" file="$(eval find('gummi_base_' + base) + '/config/joint_limits.yaml')"/>
+    <rosparam command="load" file="$(arg urdf_path)/config/joint_limits.yaml"/>
   </group>
 
   <!-- Load default settings for kinematics; these settings are overridden by settings in a node's namespace -->
   <group ns="$(arg robot_description)_kinematics">
-    <rosparam command="load" file="$(eval find('gummi_base_' + base) + '/config/kinematics.yaml')"/>
+    <rosparam command="load" file="$(arg urdf_path)/config/kinematics.yaml"/>
   </group>
 
 </launch>

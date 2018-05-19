@@ -1,5 +1,7 @@
 <launch>
 
+<arg name="urdf_path"/>
+
 <arg name="moveit_ns" default="false"/>
 
 <arg name="debug" default="false" />
@@ -17,6 +19,7 @@
 
 <group ns="moveit" unless="$(arg moveit_ns)">
   <include file="$(find gummi_moveit)/launch/move_group_internals.launch.xml">
+    <arg name="urdf_path" value="$(arg urdf_path)"/>
     <arg name="allow_trajectory_execution" value="$(arg allow_trajectory_execution)"/>
     <arg name="fake_execution" value="$(arg fake_execution)"/>
     <arg name="info" value="$(arg info)"/>
@@ -26,6 +29,7 @@
 
 <group if="$(arg moveit_ns)">
   <include file="$(find gummi_moveit)/launch/move_group_internals.launch.xml">
+    <arg name="urdf_path" value="$(arg urdf_path)"/>
     <arg name="allow_trajectory_execution" value="$(arg allow_trajectory_execution)"/>
     <arg name="fake_execution" value="$(arg fake_execution)"/>
     <arg name="info" value="$(arg info)"/>

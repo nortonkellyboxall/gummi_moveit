@@ -1,7 +1,10 @@
 <launch>
+  <arg name="urdf_path"/>
   <node name="gummi_right_arm_controller" pkg="gummi_interface" type="follow_joint_trajectory.py" output="screen"/>
 
-  <include file="$(find gummi_moveit)/launch/planning_context.launch" />
+  <include file="$(find gummi_moveit)/launch/planning_context.launch" >
+      <arg name="urdf_path" value="$(arg urdf_path)"/>
+  </include>
 
   <!-- GDB Debug Option -->
   <arg name="debug" default="false" />
@@ -24,6 +27,7 @@
   <!-- Planning Functionality -->
   <include ns="move_group" file="$(find gummi_moveit)/launch/planning_pipeline.launch.xml">
     <arg name="pipeline" value="ompl" />
+    <arg name="urdf_path" value="$(arg urdf_path)"/>
   </include>
 
   <!-- Trajectory Execution Functionality -->
