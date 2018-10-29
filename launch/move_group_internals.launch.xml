@@ -1,6 +1,6 @@
 <launch>
   <node name="gummi_right_arm_controller" pkg="gummi_interface" type="follow_joint_trajectory.py" output="screen">
-    <remap from="/gummi/joint_commands" to="/gummi/joint_commands_request" />
+    <!-- <remap from="/gummi/joint_commands" to="/gummi/joint_commands_request" /> -->
   </node>
   <node name="head_joint_trajectory_controller" pkg="gummi_interface" type="follow_joint_trajectory_head.py" output="screen">
     <!-- <remap from="/gummi/joint_commands" to="/gummi/joint_commands_request_head" /> -->
