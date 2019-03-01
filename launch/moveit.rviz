@@ -4,15 +4,16 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
         - /MotionPlanning1
         - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
         - /MotionPlanning1/Planned Path1
         - /TF1
         - /TF1/Frames1
-        - /PointCloud21
+        - /PointCloud22
       Splitter Ratio: 0.742560029
-    Tree Height: 332
+    Tree Height: 331
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -41,11 +42,14 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Class: moveit_rviz_plugin/MotionPlanning
+    - Acceleration_Scaling_Factor: 1
+      Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
       Move Group Namespace: ""
       MoveIt_Allow_Approximate_IK: false
       MoveIt_Allow_External_Program: false
+      MoveIt_Allow_Replanning: false
+      MoveIt_Allow_Sensor_Positioning: false
       MoveIt_Goal_Tolerance: 0
       MoveIt_Planning_Attempts: 10
       MoveIt_Planning_Time: 5
@@ -76,6 +80,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          camera:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           head_pitch:
             Alpha: 1
             Show Axes: false
@@ -97,6 +106,11 @@ Visualization Manager:
             Show Trail: false
             Value: true
           lowerarm_preroll_u:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pointer:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -176,6 +190,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          camera:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           head_pitch:
             Alpha: 1
             Show Axes: false
@@ -197,6 +216,11 @@ Visualization Manager:
             Show Trail: false
             Value: true
           lowerarm_preroll_u:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pointer:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -230,6 +254,7 @@ Visualization Manager:
         Show Robot Collision: false
         Show Robot Visual: true
       Value: true
+      Velocity_Scaling_Factor: 1
     - Class: rviz/TF
       Enabled: true
       Frame Timeout: 15
@@ -237,6 +262,34 @@ Visualization Manager:
         All Enabled: false
         base_link:
           Value: false
+        camera:
+          Value: true
+        camera1_link:
+          Value: true
+        camera2_aligned_depth_to_color_frame:
+          Value: true
+        camera2_aligned_depth_to_infra1_frame:
+          Value: true
+        camera2_aligned_depth_to_infra2_frame:
+          Value: true
+        camera2_color_frame:
+          Value: true
+        camera2_color_optical_frame:
+          Value: true
+        camera2_depth_frame:
+          Value: true
+        camera2_depth_optical_frame:
+          Value: true
+        camera2_infra1_frame:
+          Value: true
+        camera2_infra1_optical_frame:
+          Value: true
+        camera2_infra2_frame:
+          Value: true
+        camera2_infra2_optical_frame:
+          Value: true
+        camera2_link:
+          Value: true
         head_pitch:
           Value: true
         head_yaw:
@@ -247,6 +300,8 @@ Visualization Manager:
           Value: false
         lowerarm_preroll_u:
           Value: false
+        pointer:
+          Value: true
         shoulder:
           Value: false
         shoulder_preroll:
@@ -264,9 +319,31 @@ Visualization Manager:
       Show Names: true
       Tree:
         base_link:
+          camera2_link:
+            camera2_aligned_depth_to_color_frame:
+              camera2_color_optical_frame:
+                {}
+            camera2_aligned_depth_to_infra1_frame:
+              camera2_infra1_optical_frame:
+                {}
+            camera2_aligned_depth_to_infra2_frame:
+              camera2_infra2_optical_frame:
+                {}
+            camera2_color_frame:
+              {}
+            camera2_depth_frame:
+              camera2_depth_optical_frame:
+                {}
+            camera2_infra1_frame:
+              {}
+            camera2_infra2_frame:
+              {}
           head_yaw:
             head_pitch:
-              {}
+              camera:
+                {}
+              camera1_link:
+                {}
           shoulder_preroll:
             shoulder:
               upperarm_preroll:
@@ -275,7 +352,8 @@ Visualization Manager:
                     lowerarm_preroll_d:
                       lowerarm:
                         wrist:
-                          {}
+                          pointer:
+                            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -303,7 +381,37 @@ Visualization Manager:
       Size (Pixels): 1
       Size (m): 0.00999999978
       Style: Points
-      Topic: /camera/depth_registered/points
+      Topic: /camera1/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Points
+      Topic: /camera2/depth_registered/points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -313,7 +421,7 @@ Visualization Manager:
     Background Color: 48; 48; 48
     Default Light: true
     Fixed Frame: base_link
-    Frame Rate: 30
+    Frame Rate: 5
   Name: root
   Tools:
     - Class: rviz/Interact
@@ -324,30 +432,30 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 1.5879004
+      Distance: 0.456922144
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.541085482
-        Y: -1.54731226
-        Z: 2.46801051e-07
+        X: 0.43750003
+        Y: 0.401586801
+        Z: 1.55248415e-07
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.249796361
+      Pitch: 0.279796362
       Target Frame: base_link
       Value: XYOrbit (rviz)
-      Yaw: 5.07494688
+      Yaw: 0.811761439
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1028
+  Height: 1026
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -356,9 +464,9 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000002b8000003befc0200000007fb000000100044006900730070006c0061007900730100000028000001e1000000d700fffffffb0000000800480065006c00700000000342000000bb0000007300fffffffb0000000a0056006900650077007300000003b0000000b0000000ad00fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000020f000001d70000018300fffffffb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004a00ffffff00000466000003be00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000100000000000002b8000003bcfc0200000007fb000000100044006900730070006c0061007900730100000028000001e0000000d700fffffffb0000000800480065006c00700000000342000000bb0000007300fffffffb0000000a0056006900650077007300000003b0000000b0000000ad00fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000020e000001d60000018300fffffffb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004a00ffffff00000391000003bc00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1828
-  X: 92
+  Width: 1615
+  X: 65
   Y: 24
